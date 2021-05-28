@@ -1,0 +1,3 @@
+[submodule "reports/report_latex"]
+	path = reports/report_latex
+	url = https://github.com/martinlarsalbert/roll-_decay_damping_latex.git
