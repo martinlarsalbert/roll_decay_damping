@@ -155,6 +155,7 @@ def tree_writer(body:str, build_directory:str, save_main=True):
     body = ole_ole_ole(body=body)
     body = star_sub_sections(body=body)
     body = citep(body=body)
+    body = remove_hypertarget(body=body)
     
     pre, document, end = split_parts(body=body)
     sections = splitter_section(document=document)
@@ -389,11 +390,33 @@ def split_parts(body:str):
 
     return pre, document, end
 
+def remove_hypertarget(body:str):
+    """
+    Remove something like:
+    \hypertarget{analysis}{%
+    \section{Analysis}\label{analysis}}
+
+    to:
+    \section{Analysis}\label{analysis}
+
+    """
+
+    results = re.findall(r'\\section{[^}]+}\\label{[^}]+}', body)
+    for result in results:
+        repl = re.sub(r'\\section', r'\\\\section', result)
+        repl = re.sub(r'\\label', r'\\\\label', repl)
+                
+        body = re.sub(r'\\hypertarget{[^}]+}{%\n*' + repl + r'\}', repl=repl, string=body)
+    
+    return body
+
+
 
 def splitter_section(document):
 
     
     parts = re.split(pattern= r'\\section', string=document)
+    # parts = re.split(pattern= r'\\hypertarget{[^}]+}{%\n*\\section{[^}]+}\\label{[^}]+}}', string=document)
 
     sections = OrderedDict()
 
@@ -417,6 +440,8 @@ def splitter_section(document):
         sections[section_name] = section
 
     return sections
+
+
 
 equation_dict = dict()
 class Equation(Math):
