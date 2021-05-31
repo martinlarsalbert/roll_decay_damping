@@ -18,3 +18,4 @@ sympy
 seaborn
 pyro-ppl
 rolldecay-estimators
+pykalman

@@ -14,8 +14,8 @@ def plot(data:pd.DataFrame, y='phi', ax=None, **kwargs):
     if y is 'phi':
         ax.set_ylabel(r'Roll angle $\phi$ $[rad]$')
     elif y is 'phi1d':
-        ax.set_ylabel(r'Roll angle $\dot{phi}$ $[rad/s]$')
+        ax.set_ylabel(r'Roll angle $\dot{\phi}$ $[rad/s]$')
     elif y is 'phi2d':
-        ax.set_ylabel(r'Roll angle $ddot{\phi}$ $[rad/s^2]$')
+        ax.set_ylabel(r'Roll angle $\ddot{\phi}$ $[rad/s^2]$')
 
     return ax
