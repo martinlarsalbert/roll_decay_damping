@@ -1,7 +1,9 @@
 Roll decay damping
 ==============================
-
 Assignment in Chalmers course: FMMS050
+The analysis can be launched in Binder:
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/martinlarsalbert/roll_decay_damping/HEAD?filepath=reports%2Freport%2F01.1.report.ipynb)
+
 The LaTeX part is available in another repository:[roll-_decay_damping_latex](https://github.com/martinlarsalbert/roll-_decay_damping_latex).
 
 
