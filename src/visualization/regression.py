@@ -25,6 +25,8 @@ def result_table(df_results2, caption:str, label:str):
 
     df_table['index'] = df_table['index'].apply(lambda x : f'${vlatex(x)}$')
 
+    df_table.sort_values(by='index', inplace=True)
+
     units={'index':''}
 
     lt = LateXTable(df_table, rename={'index':'coeff','coeff':'mean'}, 
