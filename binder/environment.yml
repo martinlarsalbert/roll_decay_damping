@@ -1,0 +1,18 @@
+channels:
+  - conda-forge
+dependencies:
+  - python3.9
+  - numpy
+  - matplotlib
+  - pandas
+  - scipy
+  - sympy
+  - joblib
+  - seaborn
+  - statsmodels
+  - sklearn
+  - sympy
+  
+  - pip:
+    - rolldecay-estimators
+    
