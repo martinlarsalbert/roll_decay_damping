@@ -401,13 +401,22 @@ def remove_hypertarget(body:str):
 
     """
 
-    results = re.findall(r'\\section{[^}]+}\\label{[^}]+}', body)
-    for result in results:
-        repl = re.sub(r'\\section', r'\\\\section', result)
-        repl = re.sub(r'\\label', r'\\\\label', repl)
-                
-        body = re.sub(r'\\hypertarget{[^}]+}{%\n*' + repl + r'\}', repl=repl, string=body)
+    #results = re.findall(r'\\section{[^}]+}\\label{[^}]+}', body)
+    #for result in results:
+    #    repl = re.sub(r'\\section', r'\\\\section', result)
+    #    repl = re.sub(r'\\label', r'\\\\label', repl)
+    #            
+    #    body = re.sub(r'\\hypertarget{[^}]+}{%\n*' + repl + r'\}', repl=repl, string=body)
     
+    #for result in re.finditer(r'\\hypertarget{[^}]+}{%\n*([^}]+})}', body):
+    #    body = body.replace(result.group(0), result.group(1))
+
+    for result in re.finditer(r'\\hypertarget{[^}]+}{%\n*([^}]+})}', body):
+        body = body.replace(result.group(0), result.group(1))
+    
+    for result in re.finditer(r'\\hypertarget{[^}]+}{%\n*([^}]+}\\label\{[^}]+})}', body):
+        body = body.replace(result.group(0), result.group(1))
+
     return body
 
 
@@ -447,7 +456,20 @@ equation_dict = dict()
 class Equation(Math):
         
     def __init__(self,data:sp.Eq,label:str, url=None, filename=None, metadata=None, max_length=150, subs=True):
-        self.label = label
+        """[summary]
+
+        Args:
+            data (sp.Eq): [description]
+            label (str): equation label (prefix eq: will be added)
+            url ([type], optional): [description]. Defaults to None.
+            filename ([type], optional): [description]. Defaults to None.
+            metadata ([type], optional): [description]. Defaults to None.
+            max_length (int, optional): [description]. Defaults to 150.
+            subs (bool, optional): [description]. Defaults to True.
+        """
+                
+        
+        self.label = f'eq:{label}'
         self.expression = data
 
         if isinstance(data,str):

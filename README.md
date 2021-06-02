@@ -2,6 +2,9 @@ Roll decay damping
 ==============================
 
 Assignment in Chalmers course: FMMS050
+The LaTeX part is available in another repository:[roll-_decay_damping_latex](https://github.com/martinlarsalbert/roll-_decay_damping_latex).
+
+
 
 Project Organization
 ------------

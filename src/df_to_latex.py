@@ -17,7 +17,7 @@ class LateXTable(PrettyTable):
         caption : str, optional
             This will be the caption in LaTeX, by default 'Caption'
         label : str, optional
-            This will be the label: tab:label, by default 'label'
+            This will be the label: tab:label, by default 'label', Note prefix tab: added automatically!
         print_latex_longtable : bool, optional
             A switch to instead get a longtable in LaTeX, by default False
         fontsize : str, optional
