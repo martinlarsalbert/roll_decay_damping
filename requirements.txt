@@ -13,7 +13,7 @@ pandas
 matplotlib
 statsmodels
 scipy
-sklearn
+scikit-learn
 sympy
 seaborn
 pyro-ppl
